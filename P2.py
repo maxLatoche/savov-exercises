@@ -1,4 +1,5 @@
 import numpy as np
+from sympy import *
 
 # P2.2
 print("P2.2\n", np.add([1, 0, 1], [0, 2, 2]))
@@ -45,3 +46,16 @@ v = [1, 2, 0]
 
 print("P2.8\n", np.cross(u, v) / np.linalg.norm(np.cross(u, v)))
 print("cross product divided by the length of the cross product (normalized), gives a unit-length vector. -- To find a unit vector with the same direction as a given vector, we divide the vector by its magnitude.\n")
+
+u1 = [1,0,1]
+u2 = [1,3,0]
+v = [1,1,0]
+
+cross_product = np.cross(u1, u2) # [-3,1,3]
+
+# solve for t
+# t(cross_product) . v = 8
+# [-3t, t, 0] . [1, 1, 0] === -3t+t = 8 === -2t = 8 === t = -4
+# solve(np.dot(np.multiply(t, cross_product), v) t)
+
+print("P2.9\n", np.multiply(-4, cross_product))
