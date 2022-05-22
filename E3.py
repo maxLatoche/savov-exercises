@@ -1,4 +1,5 @@
 from sympy import *
+import numpy as np
 
 # 3.2
 
@@ -31,3 +32,64 @@ B.row_op(1, lambda i, j: i*-2)
 B.row_op(0, lambda i, j: i-B[3:][j])
 
 print('E3.2\n', A.rref(), B)
+
+print('E3.4a\n', 'BA**-1')
+print('E3.4a\n', 'order seems wrong here?', 'EA**-1B**-1C**-1D**-1')
+print('E3.4a\n', 'AD**-1')
+
+P_a = [
+    [1, 2],
+    [3, 4]
+]
+P_b = [
+    [5, 6],
+    [7, 8]
+]
+
+print('E3.5\n', np.dot(P_a, P_b))
+
+Q_a = [
+    [3, 1, 2, 2],
+    [0, 2, -2, 1]
+]
+Q_b = [
+    [-2, 3],
+    [1, 0],
+    [-2, -2],
+    [2, 2]
+]
+
+print('E3.5\n', np.dot(Q_a, Q_b))
+
+A = [
+    [2, 3],
+    [5, 6]
+]
+
+B = [
+    [7, 8],
+    [1, 4]
+]
+
+C = [
+    [-1, 4],
+    [2, 1],
+    [-1, 2],
+]
+
+U = [2, 1]
+
+V = [
+    [1],
+    [-2]
+]
+
+print('E3.6a\n', np.linalg.matrix_power(A, 2))
+print('E3.6b\n', np.linalg.matrix_power(B, 2))
+print('E3.6c\n', np.matmul(A, B))
+print('E3.6d\n', np.matmul(B, A))
+# print('E3.6e\n', np.multiply(A, C))
+print('E3.6e\n', 'Does not exit, C\'s Y is larger than A\'s X')
+print('E3.6f\n', np.matmul(C, A))
+print('E3.6g\n', np.matmul(np.matmul(np.matmul(U, A), B), V))
+
