@@ -34,7 +34,7 @@ B.row_op(0, lambda i, j: i-B[3:][j])
 print('E3.2\n', A.rref(), B)
 
 print('E3.4a\n', 'BA**-1')
-print('E3.4a\n', 'order seems wrong here?', 'EA**-1B**-1C**-1D**-1')
+print('E3.4a\n', 'C**-1B**-1A**-1ED**-1')
 print('E3.4a\n', 'AD**-1')
 
 P_a = [
