@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as animation
 
-number_of_frames = 25
+number_of_frames = 60
 
 def GenerateSteps(frames, starting_vector, ending_vector):
     # arg 1 === 3 dimensional
@@ -22,13 +22,20 @@ def GenerateSteps(frames, starting_vector, ending_vector):
     return line_data
 
 
+# NOTE: other_updates is a list of tuples, with a function to be called and the frame it should be called in
+def update_lines(num, steps, lines, *other_updates):
+    for update in other_updates:
+        (func, frame) = update
+        if (frame == num):
+            func()
 
-def update_lines(num, steps, lines):
-    for line in lines:
-        print('steps', steps[0][num:num+1], steps[1][num:num+1], steps[2][num:num+1])
-        # NOTE: there is no .set_data() for 3 dim data...
-        line.set_data([0, steps[0][num:num+1]], [0, steps[1][num:num+1]])
-        line.set_3d_properties([0, steps[2][num:num+1]])
+    if (num > 30):
+        step_index = num - 30
+        for line in lines:
+            print('steps', steps[0][step_index:step_index+1], steps[1][step_index:step_index+1], steps[2][step_index:step_index+1])
+            # NOTE: there is no .set_data() for 3 dim data...
+            line.set_data([0, steps[0][step_index:step_index+1]], [0, steps[1][step_index:step_index+1]])
+            line.set_3d_properties([0, steps[2][step_index:step_index+1]])
     return lines
 
 # Attaching 3D axis to the figure
@@ -70,8 +77,27 @@ ax.set_zlabel('Z')
 
 ax.set_title('3D Test')
 
+def show_exerted_forces():
+    x1 = [0, A[0,0]]
+    y1 = [0, A[0,1]]
+    z1 = [0, A[0,2]]
+    x2 = [0, A[1,0]]
+    y2 = [0, A[1,1]]
+    z2 = [0, A[1,2]]
+    x3 = [0, A[2,0]]
+    y3 = [0, A[2,1]]
+    z3 = [0, A[2,2]]
+
+    ax.plot(x1, y1, z1)
+    ax.plot(x2, y2, z2)
+    ax.plot(x3, y3, z3)
+
+
+
 # Creating the Animation object
-line_ani = animation.FuncAnimation(fig, update_lines, number_of_frames, fargs=(steps, lines),
+line_ani = animation.FuncAnimation(fig, update_lines, 60, fargs=(steps, lines, (show_exerted_forces, 30)),
                                    interval=100, blit=False)
 
-plt.show()
+line_ani.save('Fundamental Spaces/matrix-vector1.gif', writer='imagemagick', fps=30)
+
+# plt.show()
