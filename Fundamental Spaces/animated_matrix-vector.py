@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as animation
 
-number_of_frames = 60
-
 def GenerateSteps(frames, starting_vector, ending_vector):
     # arg 1 === 3 dimensional
     # add two to each frame to account for starting frame
@@ -29,7 +27,7 @@ def update_lines(num, steps, lines, *other_updates):
         if (frame == num):
             func()
 
-    if (num > 30):
+    if (num > 29 and num < 61):
         step_index = num - 30
         for line in lines:
             print('steps', steps[0][step_index:step_index+1], steps[1][step_index:step_index+1], steps[2][step_index:step_index+1])
@@ -63,7 +61,7 @@ starting_coordinates = [v[0][0], v[1][0], v[2][0]]
 # NOTE: Can't pass empty arrays into 3d version of plot()
 lines = ax.plot([0, starting_coordinates[0]], [0, starting_coordinates[0]], [0, starting_coordinates[0]])
 
-steps = GenerateSteps(number_of_frames, v, w)
+steps = GenerateSteps(30, v, w)
 
 # Setting the axes properties
 ax.set_xlim3d([0.0, 8.0])
@@ -95,7 +93,7 @@ def show_exerted_forces():
 
 
 # Creating the Animation object
-line_ani = animation.FuncAnimation(fig, update_lines, 60, fargs=(steps, lines, (show_exerted_forces, 30)),
+line_ani = animation.FuncAnimation(fig, update_lines, 90, fargs=(steps, lines, (show_exerted_forces, 30)),
                                    interval=100, blit=False)
 
 line_ani.save('Fundamental Spaces/matrix-vector1.gif', writer='imagemagick', fps=30)
