@@ -3,16 +3,23 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # slope  and intercepts
-s1, intercept1 = (1/4), 1.0
-s2, intercept2 = (3/4), 0.0
+slope1, y_intercept_1 = (1/4), 1.0
+slope2, y_intercept_2 = (3/4), 0.0
 
 l = np.linspace(-6, 6, 100)
+
+# plt.figure(figsize=(8, 8))
 
 plt.xlim(0, 6)
 plt.ylim(0, 6)
 plt.title('plot an angle w python')
-plt.plot(l, l*s1+intercept1)
-plt.plot(l, l*s2+intercept2)
+plt.plot(l, l*slope1+y_intercept_1)
+plt.plot(l, l*slope2+y_intercept_2)
+
+x_point_of_intersection = (y_intercept_2 - y_intercept_1) / (slope1 - slope2)
+y_point_of_intersection = slope1 * x_point_of_intersection + y_intercept_1
+
+plt.scatter(x_point_of_intersection, y_point_of_intersection, color='midnightblue')
 
 plt.show()
 
