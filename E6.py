@@ -62,6 +62,50 @@ print(characteristic_polynomial, sp.roots(characteristic_polynomial))
 print('\n')
 
 
+print('E6.2\n')
+A = sp.Matrix([
+    [3, -2, 0],
+    [-2, 3, 0],
+    [0, 0, 5],
+])
+
+A_p = A - (sp.Matrix.eye(3) * l)
+
+characteristic_polynomial = sp.factor(A_p.det())
+
+# roots() returns a dict w the shape {value: count}
+eigenvalues = sp.roots(characteristic_polynomial)
+print(characteristic_polynomial, eigenvalues)
+
+for eigenvalue in eigenvalues.keys():
+    print(eigenvalue)
+    # tired of fighting with sympy so I'm moving on without the lower level method calls calculating the null space for this one
+    # (A - eigenvalue*sp.Matrix.eye(3)).row_join(sp.Matrix.zeros(3, 1)).rref()
+    print((A - eigenvalue*sp.Matrix.eye(3)).nullspace())
+
+# l = 1 =
+# [
+# [1, -1, 0, 0],
+# [0,  0, 1, 0],
+# [0,  0, 0, 0]]
+#
+# x_1 - x_2 = 0
+# x_3 = 0
+# x_2 = x_2
+
+# x_1 = x_2
+# x_3 = 0
+# x_2 = x_2
+
+# Ax = 0
+# x = [
+#   [1],
+#   [1],
+#   [0],
+# ]
+
+print('\n')
+
 print('E6.11\n', )
 print('a 2x2 upper triangular matrix would be:\n')
 print([
