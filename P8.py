@@ -43,3 +43,47 @@ for i, chance in enumerate(probability_distribution):
 print("winnings", winnings)
 
 print("winnings < bet, don\'t play")
+
+print("p8.6\n")
+
+probabilities = [(1/6, 0), (1/6, 0), (1/6, 0), (1/6, 1), (1/6, 1), (1/6, 5)]
+
+winnings = 0
+for probability in probabilities:
+    winnings += probability[0] * probability[1]
+
+print("winnings", winnings)
+print("winnings > bet, play")
+
+print("p8.8\n")
+
+good_day_start = sp.Matrix([[1], [0]])
+M = sp.Matrix([
+    [1/2, 1/4],
+    [1/2, 3/4]
+])
+
+one = M.multiply(good_day_start)
+print(one)
+two = M.multiply(M.multiply(good_day_start))
+print(two)
+# finding the state at infinity iterations means we'll wind up at the standard distribution
+# we know that the standard distribution will be an eigenvector of M
+# (M - 1)v = 0
+
+# n = M.eigenvects()
+# print(n.multiply(good_day_start))
+
+# I think I'm struggling with sympy and numpy implemenatation details
+
+# test is the transition matrix from the example in 8.2, but it doesn't come out to the same answer as the book
+# furthermore, switching between rationals and decimals gives different answers
+test = sp.Matrix([
+    [sp.Rational(1/5), sp.Rational(1/10), sp.Rational(1, 3)],
+    [sp.Rational(2/5), sp.Rational(8/10), sp.Rational(1, 3)],
+    [sp.Rational(2/5), sp.Rational(1/10), sp.Rational(1, 3)]
+])
+
+print(test.eigenvects(simplify=True, rational=True))
+
+
