@@ -28,15 +28,15 @@
     <br/>
     <div style="margin: 1rem;">
         <input type="range" value="4" min="-6" max="6" id="A-range" name="A" oninput="this.nextElementSibling.value = this.value">
-        <output>4</output>
+        <input type="text" value="4" min="-6" max="6" id="A-text" oninput="this.previousElementSibling.value = this.value; this.previousElementSibling.dispatchEvent(new Event('change', { bubbles: true }));" style="width: 30px;">
         <label for="A">A coefficient</label>
-        <input type="range" value="0" min="-200" max="200" id="B" name="B"
+        <input type="range" value="0" min="-200" max="200" id="B-range" name="B"
             oninput="this.nextElementSibling.value = this.value">
-        <output>0</output>
+        <input type="text" value="0" min="-200" max="200" id="B-text" oninput="this.previousElementSibling.value = this.value; this.previousElementSibling.dispatchEvent(new Event('change', { bubbles: true }));" style="width: 30px;">
         <label for="B">B coefficient</label>
-        <input type="range" value="0" min="-1000" max="1000" id="C" name="C"
+        <input type="range" value="0" min="-1000" max="1000" id="C-range" name="C"
             onchange="this.nextElementSibling.value = this.value">
-        <output>0</output>
+            <input type="text" value="0" min="-10" max="10" id="C-text" oninput="this.previousElementSibling.value = this.value; this.previousElementSibling.dispatchEvent(new Event('change', { bubbles: true }));" style="width: 30px;">
         <label for="C">C coefficient</label>
         <input type="range" value="0" min="-10" max="10" id="x" name="x"
             onchange="this.nextElementSibling.value = this.value">
@@ -57,7 +57,7 @@
     const ctx = document.getElementById('myChart');
 
     window.xValues = Array.from(Array(21).keys()).map(x => x - 10)
-    window.yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, document.getElementById('B').valueAsNumber, document.getElementById('C').valueAsNumber))
+    window.yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, document.getElementById('B-range').valueAsNumber, document.getElementById('C-range').valueAsNumber))
     console.log(window.A, window.B, window.C, window.yValues)
 
     const data = {
@@ -108,7 +108,7 @@
 
 <script>
     document.getElementById('A-range').addEventListener('change', e => {
-        const yValues = window.xValues.map(window.quadratic(e.target.valueAsNumber, document.getElementById('B').valueAsNumber, document.getElementById('C').valueAsNumber))
+        const yValues = window.xValues.map(window.quadratic(e.target.valueAsNumber, document.getElementById('B-range').valueAsNumber, document.getElementById('C-range').valueAsNumber))
         window.quadratic_chart.data.datasets[0].data = yValues
         const newX = document.getElementById('x').valueAsNumber
         const newY = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + newX]
@@ -118,8 +118,8 @@
         document.getElementById('code-ex-x').innerText = newX
         document.getElementById('code-ex-y').innerText = newY
     })
-    document.getElementById('B').addEventListener('change', e => {
-        const yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, e.target.valueAsNumber, document.getElementById('C').valueAsNumber))
+    document.getElementById('B-range').addEventListener('change', e => {
+        const yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, e.target.valueAsNumber, document.getElementById('C-range').valueAsNumber))
         window.quadratic_chart.data.datasets[0].data = yValues
         const newX = document.getElementById('x').valueAsNumber
         const newY = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + newX]
@@ -129,8 +129,8 @@
         document.getElementById('code-ex-x').innerText = newX
         document.getElementById('code-ex-y').innerText = newY
     })
-    document.getElementById('C').addEventListener('change', e => {
-        const yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, document.getElementById('B').valueAsNumber, e.target.valueAsNumber))
+    document.getElementById('C-range').addEventListener('change', e => {
+        const yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, document.getElementById('B-range').valueAsNumber, e.target.valueAsNumber))
         window.quadratic_chart.data.datasets[0].data = yValues
         const newX = document.getElementById('x').valueAsNumber
         const newY = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + newX]
