@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<body>
+    <code>
+        function quadraticEquation(x) {
+            return A*x**2 * B*x + C
+        }
+    </code>
+    <p>which, based on the values we're rendering to the chart, is</p>
+    <code>
+        function quadraticEquation(x) {
+            return <span id="code-ex-A">2</span>*x**2 * <span id="code-ex-B">0</span>*x + <span id="code-ex-C">0</span>
+        }
+
+        y === <span id="code-ex-y">0</span> === quadraticEquation(<span id="code-ex-x">0</span>)
+    </code>
+    <br/>
+    <div style="margin: 1rem;">
+        <input type="range" value="4" min="-6" max="6" id="A-range" name="A" oninput="this.nextElementSibling.value = this.value">
+        <output>4</output>
+        <label for="A">A coefficient</label>
+        <input type="range" value="0" min="-200" max="200" id="B" name="B"
+            oninput="this.nextElementSibling.value = this.value">
+        <output>0</output>
+        <label for="B">B coefficient</label>
+        <input type="range" value="0" min="-1000" max="1000" id="C" name="C"
+            onchange="this.nextElementSibling.value = this.value">
+        <output>0</output>
+        <label for="C">C coefficient</label>
+        <input type="range" value="0" min="-10" max="10" id="x" name="x"
+            onchange="this.nextElementSibling.value = this.value">
+        <output>0</output>
+        <label for="x">x value</label>
+    </div>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+
+<script>
+    window.quadratic = (A, B, C) => (x) => (A * x) ** 2 + B * x + C
+    window.A = 2
+    window.B = 0
+    window.C = 0
+
+    const ctx = document.getElementById('myChart');
+
+    window.xValues = Array.from(Array(21).keys()).map(x => x - 10)
+    window.yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, document.getElementById('B').valueAsNumber, document.getElementById('C').valueAsNumber))
+    console.log(window.A, window.B, window.C, window.yValues)
+
+    const data = {
+        labels: xValues,
+        datasets: [{
+            label: 'All possible values',
+            data: window.yValues,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        },
+        {
+            data: [{
+                x: 0,
+                y: 0,
+                r: 7
+            }],
+            label: ['Result of my x value'],
+            // steppedLine: true,
+            backgroundColor: "#cd2026",
+            type: 'bubble'
+        }
+        ],
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                x: {
+                    // min: -60,
+                    // max: 60,
+                    position: {
+                        y: 0
+                    }
+                },
+                y: {
+                    min: -1000,
+                    max: 2000,
+                    position: 'center',
+                },
+            }
+        }
+    };
+    window.quadratic_chart = new Chart(ctx, config)
+</script>
+
+<script>
+    document.getElementById('A-range').addEventListener('change', e => {
+        const yValues = window.xValues.map(window.quadratic(e.target.valueAsNumber, document.getElementById('B').valueAsNumber, document.getElementById('C').valueAsNumber))
+        window.quadratic_chart.data.datasets[0].data = yValues
+        const newX = document.getElementById('x').valueAsNumber
+        const newY = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + newX]
+        window.quadratic_chart.data.datasets[1].data[0].y = newY
+        window.quadratic_chart.update()
+        document.getElementById('code-ex-A').innerText = e.target.value
+        document.getElementById('code-ex-x').innerText = newX
+        document.getElementById('code-ex-y').innerText = newY
+    })
+    document.getElementById('B').addEventListener('change', e => {
+        const yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, e.target.valueAsNumber, document.getElementById('C').valueAsNumber))
+        window.quadratic_chart.data.datasets[0].data = yValues
+        const newX = document.getElementById('x').valueAsNumber
+        const newY = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + newX]
+        window.quadratic_chart.data.datasets[1].data[0].y = newY
+        window.quadratic_chart.update()
+        document.getElementById('code-ex-B').innerText = e.target.value
+        document.getElementById('code-ex-x').innerText = newX
+        document.getElementById('code-ex-y').innerText = newY
+    })
+    document.getElementById('C').addEventListener('change', e => {
+        const yValues = window.xValues.map(window.quadratic(document.getElementById('A-range').valueAsNumber, document.getElementById('B').valueAsNumber, e.target.valueAsNumber))
+        window.quadratic_chart.data.datasets[0].data = yValues
+        const newX = document.getElementById('x').valueAsNumber
+        const newY = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + newX]
+        window.quadratic_chart.data.datasets[1].data[0].y = newY
+        window.quadratic_chart.update()
+        document.getElementById('code-ex-C').innerText = e.target.value
+        document.getElementById('code-ex-x').innerText = newX
+        document.getElementById('code-ex-y').innerText = newY
+    })
+    document.getElementById('x').addEventListener('change', e => {
+        const newX = e.target.valueAsNumber
+        const newY = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + e.target.valueAsNumber]
+        window.quadratic_chart.data.datasets[1].data[0].x = e.target.valueAsNumber
+        window.quadratic_chart.data.datasets[1].data[0].y = window.quadratic_chart.data.datasets[0].data[Math.floor(window.yValues.length / 2) + e.target.valueAsNumber]
+        window.quadratic_chart.update()
+        document.getElementById('code-ex-x').innerText = newX
+        document.getElementById('code-ex-y').innerText = newY
+    })
+</script>
+
+</html>
