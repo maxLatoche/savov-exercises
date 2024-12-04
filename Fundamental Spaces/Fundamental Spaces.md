@@ -44,6 +44,7 @@ In all of these examples, what we're solving for is the domain of __column space
 Left multiplication
 
 We can think of left multiplication by M as right multiplication by M-transpose.  --Explain why.
+Left multiplication by a matrix M can be thought of as applying a linear transformation to a row vector, while right multiplication by M can be thought of as applying a linear transformation to a column vector. When we take the transpose of a matrix, we switch the rows and columns, so left multiplication by M is equivalent to right multiplication by M-transpose. -- can we display this visually?  coding this out will probably help cement it
 
 Is a vector suitable for multiplying from the right or left?  For a matrix with dimensions __m__ x __n__, a vector must have __m__ columns to multiply from the left and __n__ rows to multiply from the right.
 
@@ -52,13 +53,20 @@ Is a vector suitable for multiplying from the right or left?  For a matrix with 
 
 
 -------
+
 ## column space
 Any time you multiply a matrix by a vector _the result will fall ("land") somewhere within the column space_
+Each column of an adjacency matrix represents the out-going edges of each node -- this is an illustration of the above statement
+
+**left null space is orthogonal to column space**
+
+So the mental model is, null space is orthogonal to row space, combining them will result in 0, a lowering of rank, where left null space is orthogonal to all of the possibile projections (domain) of the matrix.
 
 (for orthogonality/gram-schmidt)
 Ax = b might not have a solution.  If b is not in the column space of a x does not exist!  You can pick something close though, that lies on the same plane as b (call it p), and calculate what the projection of A onto p is.
 
 If b is the basis that we want to convert to orthonormal, it lies outside of the desired (orthonormal) plane.
+Orthonormal tranformations are great because they preserve dot products (anything else?).
 
 
 
