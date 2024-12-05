@@ -41,3 +41,60 @@ The determinant of the identity matrix 𝐼 is 1.
 
 Once we are working with arrays greater than three dimensions, it can be hard to conceptualize what the determinant represents.  Keeping this fact about the identity matrix in mind can help you orient yourself when considering the deteminant and its relation to the identity, even in an abstract nD space, since the behavior and relationships within the space will be analogous to simpler, geometric spaces.
 
+## Three ways to get the determinant
+
+### Pivot
+
+You can do gaussian elimination and take the multiples of the pivots.
+
+### Brute force
+
+### Cofactor Expansion
+
+cofactors are useful when matrices have many 0s.
+
+## Cramers Rule
+
+for Ax = b, you can solve for x by taking the identity matrix and plugging in the vector x for the column you want to solve for.
+
+once you do something like A[
+    [x1, 0, 0],
+    [x2, 1, 0],
+    [x3, 0, 1]
+    ] = [
+        [b1, a12, a13],
+        [b2, a22, a23],
+        [b3, a32, a33],
+    ] = B1
+
+then x1 = det(B1) / det(A)
+
+likewise for columns 2 and 3
+
+A[
+    [1, x1, 0],
+    [0, x2, 0],
+    [0, x3, 1]
+    ] = [
+        [a11, b1, a13],
+        [a21, b2, a23],
+        [a31, b3, a33],
+    ] = B2
+
+then x2 = det(B2) / det(A)
+
+A[
+    [1, 0, x1],
+    [0, 1, x2],
+    [0, 0, x3]
+    ] = [
+        [a11, a12, b1],
+        [a21, a22, b2],
+        [a31, a32, b3],
+    ] = B1
+
+then x3 = det(B3) / det(A)
+
+up to N -- as long as det(A) !== 0
+
+xn = det(Bn)/det(A)
