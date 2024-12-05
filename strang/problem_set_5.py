@@ -1,6 +1,5 @@
+# 5.2
 '''
-5.2
-
 16)
 
 Q:
@@ -19,4 +18,39 @@ The 1, 2 cofactor of an n x n matrix has a 1 in the first column and Fn-2 in the
 Multiply by (-1)1+2 and also (-1) from the 1, 2 entry to
 find Fn = Fn-1 + Fn-2 (so these determinants are Fibonacci numbers).
 
+'''
+
+
+'''
+32)
+
+Q:
+Cofactors of these 1, 3, 1 matrices give the recursion Sn = 3Sn-1 - Sn-2
+This recursion produces every second Fibonacci number
+
+S1 = [3]  S2 = [[3,1], [1,3]]  S3 = [[3, 1, 0], [1, 3, 1], [0, 1, 3]]
+
+Show that Sn is the Fibonacci number F2n+2 by proving F2n+2 = 3F2n - F2n-2
+Keep using Fibonaccis rule Fk = Fk-1 + Fk-2 starting with k = 2n + 2
+
+'''
+
+'''
+33)
+
+The symmetrical Pascal matrices have determinant 1.  If I subtract 1 from the n,n entry why does the determinant become 0?
+
+det([
+[1, 1, 1, 1],
+[1, 2, 3, 4],
+[1, 3, 6, 10],
+[1, 4, 10, 20],
+]) = 1 (known)
+
+det([
+[1, 1, 1, 1],
+[1, 2, 3, 4],
+[1, 3, 6, 10],
+[1, 4, 10, 19],
+]) = 0 (to explain)
 '''
