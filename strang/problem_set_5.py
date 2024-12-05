@@ -1,3 +1,5 @@
+import numpy as np
+
 # 5.2
 '''
 16)
@@ -54,3 +56,48 @@ det([
 [1, 4, 10, 19],
 ]) = 0 (to explain)
 '''
+
+
+#5.3
+
+'''
+8)
+
+Q:
+Find the cofactors of A and multiply A(transpose(C)) to find det A:
+
+A = [
+    [1, 1, 4],
+    [1, 2, 2],
+    [1, 2, 5],
+]
+
+C = [
+    [6, -3, 0],
+    ...
+    ...
+]
+
+A(transpose(C)) = ?
+
+If you change that 4 to 100, why is det(A) unchanged?
+
+A:
+
+1[
+    [2, 2],
+    [2, 5],
+] - 1[
+    [1, 2],
+    [1, 5],
+] + 4[
+    [1, 2],
+    [1, 2],
+] === 1*(2*5 - 2*2) - 1(1*5 - 1*2) + 4(1*2 - 1*2) === 6 - 3 + 0
+
+
+the 1, 3 cofactor is 0, so the first multiple doesn't matter
+'''
+
+
+
