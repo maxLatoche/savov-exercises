@@ -99,5 +99,35 @@ A:
 the 1, 3 cofactor is 0, so the first multiple doesn't matter
 '''
 
+'''
+27)
+
+Polar coords satisfy x = rcosθ and y = rsinθ.  Polar area is J dr dθ.
+
+J = [
+    [δx/δr, δx/δθ],
+    [δy/δr, δy/δθ]
+] = [
+    [cosθ, -rsinθ],
+    [sinθ, rcosθ]
+]
+
+Note: this is Substituting for x=rcosθ && y=rsinθ, so:
+δx/δr === δrcosθ/δr === cosθ,
+δx/δθ === δrcosθ/δθ === -rsinθ -- the derivative of sin is cos and vice versa, This negative sign arises because as θ increases, cosθ is decreasing (moving downward on the graph), indicating a negative rate of change.
+δy/δr === δrsinθ/δr === sinθ
+δy/δθ === δrsinθ/δθ === rcosθ -- Why there’s no sign change: The cosθ is positive in its derivative because sinθ is increasing as you increase θ
+
+
+The derivative of either x or y with respect to r simply gives a scaling factor, as there is no interaction with -sinθ (which only arises from derivatives with respect to theta. (r is scaling, theta is directional)
+
+
+
+the two columns are orthogonal. Their lengths are ___.  thus J = ___
+
+'''
+
+
+
 
 
