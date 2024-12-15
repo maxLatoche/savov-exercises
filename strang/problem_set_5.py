@@ -1,5 +1,3 @@
-import numpy as np
-
 # 5.2
 '''
 16)
@@ -134,7 +132,39 @@ Area=∫∫rdrdθ.
 28)
 
 Q: Spherical coordinates ρ (rho, radius), θ (theta, angle from z axis), ɸ (phi, angle from x axis) satisfy
-x = ρsinθcosɸ and y = ρsinɸsinθ and z = ρcosɸ.  Find the 3x3 matrix of partial derivatives.  Simplify its determinant to
+x = ρsinɸcosθ and y = ρsinɸsinθ and z = ρcosɸ.  Find the 3x3 matrix of partial derivatives.  Simplify its determinant to
 J = p^2sinɸ.  Then dV in spherical coords is p^2sinɸdpdɸdθ, the volume of an infinitesimal "coordinate box"
+
+A:
+
+J = [
+    [δx/δp, δx/δɸ, δx/δθ],
+    [δy/δp, δy/δɸ, δy/δθ],
+    [δz/δp, δa/δɸ, δz/δθ]
+] = [
+    [sinɸcosθ, psinɸsinθ, -pcosɸcosθ],
+    [sinɸsinθ, psinɸcosθ, psinɸcosθ]
+    [cosɸ, 0, -psinɸ]
+] (Even without specific values for r,ϕ,θ, this abstract expression describes the sensitivity of x to p, ϕ, and θ)
+
+x = psinɸcosθ
+y = psinɸsinθ
+z = pcosɸ
+
+δx/δp = p(δ/δp)sinɸcosθ = sinɸcosθ
+δx/δɸ = p(δ/δɸ)sinɸcosθ = psinɸsinθ
+δx/δθ = p(δ/δθ)sinɸcosθ = -pcosɸcosθ
+
+δy/δp = p(δ/δp)sinɸsinθ = sinɸsinθ
+δy/δɸ = p(δ/δɸ)sinɸsinθ = psinɸcosθ
+δy/δθ = p(δ/δθ)sinɸsinθ = psinɸcosθ
+
+δz/δp = p(δ/δp)cosɸ = cosɸ
+δz/δɸ = p(δ/δɸ)cosɸ = 0
+δz/δθ = p(δ/δθ)cosɸ = -psinɸ
+
+sinɸcosθ(psinɸcosθ(-psinɸ) - 0*psinɸcosθ) - psinɸsinθ(sinɸsinθ(-psinɸ) - psinɸcosθcosɸ) + -pcosɸcosθ(sinɸsinθ*0 - cosɸpsinɸcosθ)
+sinɸcosθ(-psinɸ^2cosθ) - psinɸsinθ(-psinɸ^2sinθ - psinɸcosθcosɸ) + -pcosɸcosθ(-cosɸpsinɸcosθ)
+
 '''
 
