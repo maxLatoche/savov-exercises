@@ -130,5 +130,11 @@ Area=∫∫rdrdθ.
 
 '''
 
+'''
+28)
 
+Q: Spherical coordinates ρ (rho, radius), θ (theta, angle from z axis), ɸ (phi, angle from x axis) satisfy
+x = ρsinθcosɸ and y = ρsinɸsinθ and z = ρcosɸ.  Find the 3x3 matrix of partial derivatives.  Simplify its determinant to
+J = p^2sinɸ.  Then dV in spherical coords is p^2sinɸdpdɸdθ, the volume of an infinitesimal "coordinate box"
+'''
 
