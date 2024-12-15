@@ -122,12 +122,13 @@ Note: this is Substituting for x=rcosθ && y=rsinθ, so:
 The derivative of either x or y with respect to r simply gives a scaling factor, as there is no interaction with -sinθ (which only arises from derivatives with respect to theta. (r is scaling, theta is directional)
 
 
+A:
+the two columns are orthogonal. Their lengths are 1 and r.  thus J = r.
 
-the two columns are orthogonal. Their lengths are ___.  thus J = ___
+To compute the area of a region in polar coordinates, the integral is
+Area=∫∫rdrdθ.
 
 '''
-
-
 
 
 
