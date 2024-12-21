@@ -191,5 +191,14 @@ p^2sinɸ(-cos(2θ))
 
 how does p^2sinɸ(-cos(2θ)) simplify to -p^2sinɸ?
 
+IF THE DETERMINANT IS A PART OF AN INTEGRAL OVER A FULL PERIOD OF θ, -cos(2θ) AVERAGES TO 0 AND THE RESULT WILL DEPEND ONLY ON r^2sinɸ
+
 '''
 
+'''
+40)
+Q:
+suppose A is a 5x5 matrix.  Its entries in row 1 multiply determinants (cofactors) in rows 2-5 to
+give the determinant.  Can you guess a "Jacobi formula" for det A using 2x2 determinants from
+rows 1-2 times 3x3 determinants from rows 3-5?
+'''
