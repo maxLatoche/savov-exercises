@@ -143,7 +143,7 @@ J = [
     [δz/δp, δa/δɸ, δz/δθ]
 ] = [
     [sinɸcosθ, psinɸsinθ, -pcosɸcosθ],
-    [sinɸsinθ, psinɸcosθ, psinɸcosθ]
+    [sinɸsinθ, psinɸcosθ, psinθcosɸ]
     [cosɸ, 0, -psinɸ]
 ] (Even without specific values for r,ϕ,θ, this abstract expression describes the sensitivity of x to p, ϕ, and θ)
 
@@ -157,14 +157,39 @@ z = pcosɸ
 
 δy/δp = p(δ/δp)sinɸsinθ = sinɸsinθ
 δy/δɸ = p(δ/δɸ)sinɸsinθ = psinɸcosθ
-δy/δθ = p(δ/δθ)sinɸsinθ = psinɸcosθ
+δy/δθ = p(δ/δθ)sinɸsinθ = pcosɸsinθ
 
 δz/δp = p(δ/δp)cosɸ = cosɸ
 δz/δɸ = p(δ/δɸ)cosɸ = 0
 δz/δθ = p(δ/δθ)cosɸ = -psinɸ
 
-sinɸcosθ(psinɸcosθ(-psinɸ) - 0*psinɸcosθ) - psinɸsinθ(sinɸsinθ(-psinɸ) - psinɸcosθcosɸ) + -pcosɸcosθ(sinɸsinθ*0 - cosɸpsinɸcosθ)
-sinɸcosθ(-psinɸ^2cosθ) - psinɸsinθ(-psinɸ^2sinθ - psinɸcosθcosɸ) + -pcosɸcosθ(-cosɸpsinɸcosθ)
+sinɸcosθ(psinɸcosθ(-psinɸ) - 0*psinɸcosθ) - psinɸsinθ(sinɸsinθ(-psinɸ) - pcosɸsinθcosɸ) + -pcosɸcosθ(sinɸsinθ*0 - cosɸpsinɸcosθ)
+sinɸcosθ(-p^2sinɸ^2cosθ) - psinɸsinθ(-psinɸ^2sinθ - pcosɸ^2sinθ) + -pcosɸcosθ(-pcosɸsinɸcosθ)
+
+NOTE: the next line was based on a typo that has been corrected, disregard it in the context of the problem but I'm leaving it because
+its nice to see how trigometric identities work.
+-psinɸ^2sinθ - psinɸcosθcosɸ === -psinɸ(-sinɸsinθ + cosθcosɸ) <-- trigometric identity -sinɸsinθ + cosθcosɸ === cos(θ-ɸ)
+
+we can still factor out the middle, denser minor matrix result
+-psinɸ^2sinθ - pcosɸ^2sinθ === -psinθ(sinɸ^2 + cosɸ^2) <-- trigomatric identity sinɸ^2 + cosɸ^2 = 1
+
+-p^2sinɸ^3cosθ^2 - psinɸsinθ(-psinθ) + p^2cosɸ^2sinɸcosθ^2
+-p^2sinɸ^3cosθ^2 + p^2sinɸsinθ^2 - p^2cosɸ^2sinɸcosθ^2
+
+factor out p^2 and sinɸ
+
+p^2sinɸ(-sinɸ^2cosθ^2 + sinθ^2 - cosɸ^2cosθ^2)
+
+now trigometric identity sinɸ^2 + cosɸ^2 = 1
+-sinɸ^2cosθ^2 - cosɸ^2cosθ^2 === -cosθ^2(sinɸ^2 + cosɸ^2) === -cosθ^2(1)
+
+p^2sinɸ(sinθ^2 - cosθ^2)
+
+now trigometric identity sinθ^2 - cosθ^2 === -cos(2θ)
+p^2sinɸ(-cos(2θ))
+
+
+how does p^2sinɸ(-cos(2θ)) simplify to -p^2sinɸ?
 
 '''
 
