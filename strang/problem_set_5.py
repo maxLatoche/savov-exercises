@@ -201,4 +201,23 @@ Q:
 suppose A is a 5x5 matrix.  Its entries in row 1 multiply determinants (cofactors) in rows 2-5 to
 give the determinant.  Can you guess a "Jacobi formula" for det A using 2x2 determinants from
 rows 1-2 times 3x3 determinants from rows 3-5?
+Test your formula on the -1,2,-1 tridiagonal matrix that has a determinant = 6
+M = [
+    [2, -1, 0]
+    [-1, 2, -1]
+    [0, -1, 2]
+]
+
+
+A:
+This is a recursive problem.
+
+D23 === 2*2 - (-1)*(-1) === 4 - 1 === 3
+D12 === 2*0 - (-1)*(-1) === 0 - 1 === -1
+
+x11*D23 - x12*D12 === 2*3 - 0*(-1) === 6
+
+How to solve for a larger matrix?
+
+
 '''
