@@ -217,7 +217,43 @@ D12 === 2*0 - (-1)*(-1) === 0 - 1 === -1
 
 x11*D23 - x12*D12 === 2*3 - 0*(-1) === 6
 
-How to solve for a larger matrix?
+So, to solve for a larger matrix:
+Laplace expansion.  the steps are:
+1. select k rows and k columns (doesn't this always reduce to 2 rows and 2 columns?)
+2. compute the kxk determinant of the submatrix (so, yes, via cofactor expansion)
+3. multiply the calculated determinant by the complementary matrix.
 
+M = [
+    [2, -1, 0, 0, 0]
+    [-1, 2, -1, 0, 0]
+    [0, -1, 2, -1, 0]
+    [0, 0, -1, 2, -1]
+    [0, 0, 0, -1, 2]
+]
+
+Since we're always focused on 2x2 matrices as the base case problem, for a 5x5 matrix there and 5 choose 2.  More generally n choose 2.
+
+(5 choose 2 ) === 5!/2!(5-3)! === 10
+
+So there are 10 possible combinations of rows and columns
+
+pick (choose) 2 row indexes and 2 column indexes of the 5x5 matrix form 2x2 a submatrix to solve for.
+
+Sigma_(i,j i<j)(((-1)^i+j+1)*det(A1:2,i:j)*det(A3:5,complement)) . -- where for Ax:y,a:b x:y are rows and a:b are columns.
+
+If you list all possible pairs of rows and columns for a 5x5 5x5 matrix:
+
+Rows (1, 2) and Columns (1, 2)
+Rows (1, 2) and Columns (1, 3)
+Rows (1, 2) and Columns (1, 4)
+Rows (1, 2) and Columns (1, 5)
+Rows (1, 2) and Columns (2, 3)
+Rows (1, 2) and Columns (2, 4)
+Rows (1, 2) and Columns (2, 5)
+Rows (1, 2) and Columns (3, 4)
+Rows (1, 2) and Columns (3, 5)
+Rows (1, 2) and Columns (4, 5)
+
+this combinatorial approach holds for any _any square matrix_.
 
 '''
