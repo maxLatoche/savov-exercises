@@ -269,5 +269,33 @@ det(AB) = sum of 2x2 determinants to use from A and B
 A) Guess which 2x2 determinants to use from A and B
 B) Test your formula when the rows of A are 1,2,3 and 1,4,7 and B=transpose(A)
 
+A:
+A = [
+    [1,2,3]
+    [1,4,7]
+]
 
+B = [
+    [1, 1]
+    [2, 4]
+    [3, 7]
+]
+
+AB = [
+    [14, 30]
+    [30, 66]
+]
+
+
+'''
+
+'''
+6.1
+
+19)
+A 3x3 matrix B is known to have eigenvalues 0,1,2. this is information enough to find these:
+a) the rank of B
+b) the determinant of transpose(B)B
+b) the eigenvalues of transpose(B)B
+b) the eigenvalues of (B^2 + I)^-1
 '''
