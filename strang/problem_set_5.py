@@ -257,3 +257,17 @@ Rows (1, 2) and Columns (4, 5)
 this combinatorial approach holds for any _any square matrix_.
 
 '''
+
+'''
+41)
+
+Q:
+The 2x2 matrix AB = (2 by 3)(3 by 2) has a "Cauchy-binet formula" for det(AB)
+
+det(AB) = sum of 2x2 determinants to use from A and B
+
+A) Guess which 2x2 determinants to use from A and B
+B) Test your formula when the rows of A are 1,2,3 and 1,4,7 and B=transpose(A)
+
+
+'''
