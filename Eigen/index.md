@@ -4,9 +4,15 @@ Think through `Ax = λx`:
 
 When the matrix A has the vector x applied to it (remember the motion created by right side matrix multiplication), the result is the same as if x was scaled by the eigenvalue.
 
-Another way to think of it is that the Projection matrix can scale x, but it always lies on the same plane after the projection. (I think this is right but not a clear or helpful description?)
+Another way to think of it is that the Projection matrix can scale x, but it always lies on the same plane after the projection.
 
-Rotation matrix has imaginary eigenvalues (asymmetric matrices do).  Think of the graphic representation of an eigenvector as a stable vector, and how every single vector rotates in a rotation matrix.
+To find the eigenvalue of a matrix, find the determinant of the formula A - λ𝟙, which, with the λ variables in place, will give a quadratic equation.  Solving for the roots of the quadratic equation will give the eigenvalues, λ.
+
+Then, substitue the matrix for one whose eigenvalues are removed, and solve for the vectors that take the transformation in question to the null space.
+
+(A - λ𝟙)x1 = 0
+
+Rotation matrix has imaginary eigenvalues (asymmetric matrices do).  Think of the graphic representation of an eigenvector as a stable vector, and how every single vector rotates in a rotation matrix. -- what is the utility of the imaginary eigenvalue?
 
 triangular matrix has eigenvalues on the diagonal
 
@@ -50,8 +56,11 @@ A = [
 # (-λ^3 + 6λ^2 - 11λ + 6) - 0 + 0
 # roots are 1, 2, 3
 
+# To find the eigenvectors, find the null space for different eigenvalues
 
+# (A - 3𝟙)x = 0
 
-
+# (A - (2)𝟙)x = 0
+# (A - (1)𝟙)x = 0
 
 ```
