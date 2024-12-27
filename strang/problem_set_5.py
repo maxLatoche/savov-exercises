@@ -239,7 +239,7 @@ So there are 10 possible combinations of rows and columns
 
 pick (choose) 2 row indexes and 2 column indexes of the 5x5 matrix form 2x2 a submatrix to solve for.
 
-Sigma_(i,j i<j)(((-1)^i+j+1)*det(A1:2,i:j)*det(A3:5,complement)) . -- where for Ax:y,a:b x:y are rows and a:b are columns.
+∑(i,j i<j)(((-1)^i+j+1)*det(A1:2,i:j)*det(A3:5,complement)) . -- where for Ax:y,a:b x:y are rows and a:b are columns.
 
 If you list all possible pairs of rows and columns for a 5x5 5x5 matrix:
 
@@ -298,4 +298,26 @@ a) the rank of B
 b) the determinant of transpose(B)B
 b) the eigenvalues of transpose(B)B
 b) the eigenvalues of (B^2 + I)^-1
+
+so for eigenvalue x:
+Bx = λx
+Bx = 0x
+Bx = 1x
+Bx = 2x
+
+
+det(A-λI) = 0
+
+
+if 0 is an eigenvalue the matrix is singular.  Singular matrices are at most the rank of their dimensions minus 1, because all of the rows are not linearly independent
+so rank is < 3
+
+there are non-zero eigenvalues, so the rank is >0
+
+if it were rank 1, there would only be one eigenvalue, corresponding to 1 independent vector
+
+so x != 1, 0 < x < 3
+
+x (rank) is 2
+
 '''
