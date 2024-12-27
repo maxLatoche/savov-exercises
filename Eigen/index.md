@@ -15,6 +15,9 @@ Then, substitue the matrix for one whose eigenvalues are removed, and solve for 
 Rotation matrix has imaginary eigenvalues (asymmetric matrices do).  Think of the graphic representation of an eigenvector as a stable vector, and how every single vector rotates in a rotation matrix. -- what is the utility of the imaginary eigenvalue?
 
 triangular matrix has eigenvalues on the diagonal
+-- det(A - λ𝟙) = 0
+-- the determinant of A - λ𝟙 is the product of the diagonal values: det(A - λ𝟙) = (a11 - λ)(a22 - λ)...(ann - λ)
+-- if both of the above are true, then each entry on the diagonal must equal λ
 
 ```py
 A = [
