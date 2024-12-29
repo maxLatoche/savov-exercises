@@ -308,7 +308,7 @@ Bx = 2x
 
 det(A-λI) = 0
 
-
+a)
 if 0 is an eigenvalue the matrix is singular.  Singular matrices are at most the rank of their dimensions minus 1, because all of the rows are not linearly independent
 so rank is < 3
 
@@ -319,5 +319,10 @@ if it were rank 1, there would only be one eigenvalue, corresponding to 1 indepe
 so x != 1, 0 < x < 3
 
 x (rank) is 2
+
+b)
+transposition of a matrix doesn't affect the value of the determinant
+The product of the eigenvalues of a matrix is equal to its determinant
+det(transpose(B)B) === det(transpose(B))det(B) === det(B)^2 === (0*1*2)^2 === 0
 
 '''
