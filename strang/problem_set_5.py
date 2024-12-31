@@ -325,4 +325,27 @@ transposition of a matrix doesn't affect the value of the determinant
 The product of the eigenvalues of a matrix is equal to its determinant
 det(transpose(B)B) === det(transpose(B))det(B) === det(B)^2 === (0*1*2)^2 === 0
 
+c)
+
+
+d)
+In computational settings, (B^2 +I)^-1 is sometimes referred to as the inverse regularized matrix. (A shifted inverse or regularized inverse.)
+This is due to its role in stabilizing computations when B^2 has eigenvalues close to zero.
+In physics, appears in systems that involve damped responses or regularized inversions, especially in signal processing or control theory.
+If B is diagonalizable, the eigenvalues of (B^2 +I)^-1 are given by a function
+
+(B^2 + I) makes all of the elements positive with the sqaring, then adds the identity matrix so every element is +1, which ensures the matrix is not singular.
+
+det(B) === ∏(λ^i) -- multiplying the trace gives you the determinant.  If any element is 0, the determinant is 0.  So sqaring means -1 == 1, adding the identity shifts the trace +1.  So it's impossible for 0 to be a value in the trace.
+
+
+applying a polynomial to a matrix, then transforming the eigenvector has the same result as applying the polynomial to an eigenvalue, then transforming (scaling) the eigenvector.
+so p(B)x === (asubk*A^k + asubk-1*A^k-1 + asubk-2*A^k-2 ... + asub0)x === (asubk*λ^k + asubk-1*λ^k-1 + asubk-2*λ^k-2 ... + asub0)x === p(λ)x
+NOTE: adding a constant to a matrix, like the last step in the polynomial, + asub0, adds the value across the trace, not every element in the matrix.  so the constant term is really asub0*𝟙
+
+so if p(B) === (B^2 + 𝟙)^-1 === 1/(B^2 + 𝟙)
+then
+p(0) === 1/(0^2 + 1) === 1
+p(1) === 1/(1^2 + 1) === 1/2
+p(2) === 1/(2^2 + 1) === 1/5
 '''
