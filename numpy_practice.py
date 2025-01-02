@@ -2,6 +2,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+import get_angle
+
 # slope  and intercepts
 slope1, y_intercept_1 = (1/4), 1.0
 slope2, y_intercept_2 = (3/4), 0.0
@@ -85,25 +87,8 @@ plt.scatter(x_points[2], y_points[2], color='crimson')
 plt.text(x_points[0], y_points[0], '  Point_P1', color='black')
 plt.text(x_points[2], y_points[2], '  Point_P2', color='black')
 
-def get_angle(x, y, x_center, y_center, radius):
-    adjacent = x - x_center
-    angle = np.arccos(adjacent / radius)
-
-    print('angle1', angle)
-    print('angle1', np.rad2deg(angle))
-
-    # 2pi radians is an entire revolution around the circle
-    # I think this flips the angle if the slope is negative?
-    if y - y_center < 0:
-        angle = 2*np.pi - angle
-    print('angle2', angle)
-    print('angle2', np.rad2deg(angle))
-
-    print('theta=', angle, ',angle in degree=', np.rad2deg(angle), '\n')
-    return angle
-
-upper_angle = get_angle(x_points[0], y_points[0], x_point_of_intersection, y_point_of_intersection, r)
-lower_angle = get_angle(x_points[2], y_points[2], x_point_of_intersection, y_point_of_intersection, r)
+upper_angle = get_angle.get_angle(x_points[0], y_points[0], x_point_of_intersection, y_point_of_intersection, r)
+lower_angle = get_angle.get_angle(x_points[2], y_points[2], x_point_of_intersection, y_point_of_intersection, r)
 difference = abs(upper_angle - lower_angle)
 print(difference, np.rad2deg(difference))
 
@@ -114,7 +99,7 @@ for i in range(len(x_points)):
     y = y_points[i]
 
     print('intersection point p{}'.format(i))
-    theta_list.append(get_angle(x, y, x_point_of_intersection, y_point_of_intersection, r))
+    theta_list.append(get_angle.get_angle(x, y, x_point_of_intersection, y_point_of_intersection, r))
 
 p0 = theta_list[0]
 p2 = theta_list[2]
