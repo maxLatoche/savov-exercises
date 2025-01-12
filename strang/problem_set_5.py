@@ -411,7 +411,25 @@ Pb === a((transpose(a)b)/(transpose(a)a)) === ax̂ === p
 det(P−λI)=(2−λ)(−λ)(λ+4)
 
 since all 3 vectors are dependent, the rank is 1, there is is only 1 non-zero eigenvalue, 6.  Technically 6, 0, 0 are the eigenvalues for the 3x3 matrix.
+'''
 
+
+'''
+6.2
+
+6)
+Q:
+
+a
+Describe all matrices S that diagonalize this Matrix A
+
+A = [
+    [4, 0]
+    [1, 2]
+]
+
+b.
+Describe all of the matrices that Diagonalize A^-1
 
 '''
 
