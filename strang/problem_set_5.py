@@ -374,5 +374,51 @@ C = [
     [2,2,2]
 ]
 
+det(A - λI)
+
+det([
+    [1 - λ,2,3]
+    [0,4 - λ,5]
+    [0,0,6 - λ]
+]) === 1-λ((4-λ)(6-λ)) - 5*0 - 2*0 + 3*0 === 1-λ(20-4λ-6λ+λ^2) === 1-λ(20-10λ+λ^2) === 20-20λ-10λ+10λ^2+λ^2-λ^3 ===
+-λ^3+11λ^2-30λ+20 <-- wrong, disregard
+
+The eigenvalues of a triangular matrix are the entries of the trace, so for A, λ == {1,4,6}
+
+
+Notes to help with C:
+see Projection.md
+
+
+A projection matrix is (v*transpose(v))/(transpose(v)*v)
+so for a unit vector (1,1,1), the projection matrix is [
+    [1/3, 1/3, 1/3]
+    [1/3, 1/3, 1/3]
+    [1/3, 1/3, 1/3]
+]
+this matrix projects any vector x onto the (column) space spanned by v
+
+If the basis vector is scaled by 6, 6 * 1/3 === 2
+
+so P = [
+    [2,2,2]
+    [2,2,2]
+    [2,2,2]
+] === 6*((1,1,1)transpose((1,1,1))/transpose((1,1,1))(1,1,1))
+
+Pb === a((transpose(a)b)/(transpose(a)a)) === ax̂ === p
+
+det(P−λI)=(2−λ)(−λ)(λ+4)
+
+since all 3 vectors are dependent, the rank is 1, there is is only 1 non-zero eigenvalue, 6.  Technically 6, 0, 0 are the eigenvalues for the 3x3 matrix.
+
+
 '''
 
+'''
+6.2
+
+15)
+Q: A^k approaches 0 as k -> infinity. if and only if every eigenvalue is what?  Which matrix has A^k -> 0?
+
+'''

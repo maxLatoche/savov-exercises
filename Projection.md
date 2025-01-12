@@ -5,9 +5,9 @@
 Reflecting on the dot product
 the dot product is |a||b|cosθ
 
-[the magnitude of a times cosθ gives you the length of a on the span b](images/Dot_Product.svg.png)
+[the magnitude of a times cosθ (|a|cosθ) gives you the length of a on the span b](images/Dot_Product.svg.png)
 
-Then if you also multiply by the magnitude of b, it scales based on how "strong" b is.
+Then if you also multiply by the magnitude of b, it scales based on how "strong" b is. `|a||b|cosθ`
 
 https://www.desmos.com/calculator/mbxddbixza
 
