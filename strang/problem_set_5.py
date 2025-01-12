@@ -421,4 +421,19 @@ since all 3 vectors are dependent, the rank is 1, there is is only 1 non-zero ei
 15)
 Q: A^k approaches 0 as k -> infinity. if and only if every eigenvalue is what?  Which matrix has A^k -> 0?
 
+A1 = [
+    [.6, .9]
+    [.4, .1]
+]
+
+A2 = [
+    [.6, .9]
+    [.1, .6]
+]
+
+A:
+less than 1
+The first has an eigenvalue of 1 so it approaches infinity
+the second has all eigenvalues < 1 so it approaches 0
+
 '''
