@@ -437,3 +437,12 @@ The first has an eigenvalue of 1 so it approaches infinity
 the second has all eigenvalues < 1 so it approaches 0
 
 '''
+
+'''
+6.2
+
+Q: find Λ and S to diagonalize A1 in question 15.
+what is the limit of Λ^k as k -> infinity?
+In the columns of this limiting matrix you see the what?
+
+'''
