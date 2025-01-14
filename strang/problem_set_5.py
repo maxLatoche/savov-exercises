@@ -431,6 +431,30 @@ A = [
 b.
 Describe all of the matrices that Diagonalize A^-1
 
+
+A:
+a.
+S = [
+    [0, 2]
+    [1, 1]
+]
+
+or
+
+S = [
+    [2, 0]
+    [1, 1]
+]
+
+b.
+
+A^-1 = [
+    [.25, 0]
+    [-.125, .5]
+]
+
+The same as a.? -- yes
+
 '''
 
 '''
