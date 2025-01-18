@@ -483,8 +483,33 @@ the second has all eigenvalues < 1 so it approaches 0
 '''
 6.2
 
-Q: find Λ and S to diagonalize A1 in question 15.
-what is the limit of Λ^k as k -> infinity?
-In the columns of this limiting matrix you see the what?
+16)
+
+Q:
+
+a. find Λ and S to diagonalize A1 in question 15.
+b. what is the limit of Λ^k as k -> infinity?
+c. what is the limit of S(Λ^k)S^1?
+d. In the columns of this limiting matrix you see the what?
+
+A:
+
+a.
+S = [
+]
+
+Λ = [
+]
+
+b.
+
+
+c.
+
+
+d.
+steady state
+
+
 
 '''
