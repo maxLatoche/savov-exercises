@@ -509,7 +509,15 @@ c.
 
 d.
 steady state
+'''
 
+'''
+6.2
 
+37)
 
+Q:
+The transpose of A = SΛS^-1 is transpose(A) = transpose(S^-1)Λtranspose(S). The eigenvectors
+in transpose(A)y = λy are the columns of that matrix transpose(S^-1).
+They are often called left eigenvectors.  How do you multiply matrices to find this formula for A?
 '''
