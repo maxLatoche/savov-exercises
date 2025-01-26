@@ -29,6 +29,7 @@ def Gen_RandLine(length, dims=2):
 
 def update_lines(num, dataLines, lines):
     for line, data in zip(lines, dataLines):
+        print(line, data)
         # NOTE: there is no .set_data() for 3 dim data...
         line.set_data(data[0:2, :num])
         line.set_3d_properties(data[2, :num])
@@ -58,7 +59,24 @@ ax.set_zlabel('Z')
 ax.set_title('3D Test')
 
 # Creating the Animation object
-line_ani = animation.FuncAnimation(fig, update_lines, 25, fargs=(data, lines),
+line_ani = animation.FuncAnimation(fig, update_lines, frames=25, fargs=(data, lines),
                                    interval=50, blit=False)
 
+
+# fig = plt.figure()
+# ax1 = fig.add_subplot(1, 1, 1)
+# x = [np.random.randint(0, 10) for _ in range(5)]
+# y = [np.random.randint(0, 10) for _ in range(5)]
+
+
+# def ani_func(i):
+#     x.append(np.random.randint(0, 10))
+#     y.append(np.random.randint(0, 10))
+#     ax1.clear()
+#     ax1.plot(x, y)
+
+# ani = animation.FuncAnimation(fig, ani_func, frames=10, repeat=False)
+
 plt.show()
+# ani.save('test.mp4')
+

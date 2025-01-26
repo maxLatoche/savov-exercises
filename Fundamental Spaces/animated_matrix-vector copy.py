@@ -12,9 +12,9 @@ def GenerateSteps(frames, starting_vector, ending_vector):
 
         delta = ending_vector[index] - value
         step = delta / frames
-        print('start', line_data[index])
+        print(line_data[index])
         for frame in range(frames):
-            print('frame', frame, line_data[index, frame])
+            print(line_data[index, frame])
             line_data[index, frame + 1] = line_data[index, frame] + step
 
     return line_data
@@ -30,7 +30,7 @@ def update_lines(num, steps, lines, *other_updates):
     if (num > 29 and num < 61):
         step_index = num - 30
         for line in lines:
-            # print('steps', steps[0][step_index:step_index+1], steps[1][step_index:step_index+1], steps[2][step_index:step_index+1])
+            print('steps', steps[0][step_index:step_index+1], steps[1][step_index:step_index+1], steps[2][step_index:step_index+1])
             # NOTE: there is no .set_data() for 3 dim data...
             line.set_data([0, steps[0][step_index:step_index+1]], [0, steps[1][step_index:step_index+1]])
             line.set_3d_properties([0, steps[2][step_index:step_index+1]])
@@ -38,13 +38,14 @@ def update_lines(num, steps, lines, *other_updates):
 
 # Attaching 3D axis to the figure
 fig = plt.figure()
-ax = fig.add_subplot(projection="3d")
+ax = p3.Axes3D(fig)
 
 v = np.array([
     [1],
     [1],
     [1]
 ])
+
 
 A = np.array([
     [4, 1, 2],
@@ -63,11 +64,11 @@ lines = ax.plot([0, starting_coordinates[0]], [0, starting_coordinates[0]], [0, 
 steps = GenerateSteps(30, v, w)
 
 # Setting the axes properties
-
 ax.set(xlim3d=(0, 8), xlabel='X')
 ax.set(ylim3d=(0, 8), ylabel='Y')
 ax.set(zlim3d=(0, 8), zlabel='Z')
 
+ax.set_title('3D Test')
 
 def show_exerted_forces():
     x1 = [0, A[0,0]]
@@ -86,12 +87,10 @@ def show_exerted_forces():
 
 
 
-line_ani = animation.FuncAnimation(fig, update_lines, range(90), fargs=(steps, lines, (show_exerted_forces, 30)),
-                                   interval=100, blit=False)
 # Creating the Animation object
-# line_ani = animation.FuncAnimation(fig, update_lines, 90, fargs=(steps, lines, (show_exerted_forces, 30)),
-#                                    interval=100, blit=False)
+line_ani = animation.FuncAnimation(fig, update_lines, 90, fargs=(steps, lines, (show_exerted_forces, 30)),
+                                   interval=100, blit=False)
 
-plt.show()
-# line_ani.save('Fundamental Spaces/matrix-vector1.gif', writer='imagemagick', fps=30)
+line_ani.save('Fundamental Spaces/matrix-vector1.gif', writer='imagemagick', fps=30)
 
+# plt.show()
