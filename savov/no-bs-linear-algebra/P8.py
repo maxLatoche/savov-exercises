@@ -84,6 +84,22 @@ test = sp.Matrix([
     [sp.Rational(2/5), sp.Rational(1/10), sp.Rational(1, 3)]
 ])
 
-print(test.eigenvects(simplify=True, rational=True))
+# print(test.eigenvects(simplify=True, rational=True))
 
+print("p8.9")
 
+a = sp.symbols('a')
+
+M_1 = sp.Matrix([
+    [ 0,  1/2,   0,   0, 1/2],
+    [1/4,   0, 1/2,   0, 0],
+    [1/4, 1/2,   0, 1/2, 0],
+    [1/4,   0, 1/2,   0, 1/2],
+    [1/4,   0,   0, 1/2, 0],
+])
+
+M_2 = sp.Matrix([[0.02 for i in range(5)] for j in range(5)])
+
+pagerank = M_1.multiply(.9) + M_2
+sp.pprint(pagerank)
+print(pagerank)
