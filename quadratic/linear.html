@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<body>
+    <code>
+        function linearEquation(x) {
+            return m*x + B
+        }
+    </code>
+    <span>which, based on the values we're rendering to the chart, is</span>
+    <br>
+    <code>
+        function linearEquation(x) {
+            return <span id="code-ex-m">1</span>*x + <span id="code-ex-B">0</span>
+        }
+
+        y === <span class="code-ex-y">0</span> === linearEquation(<span class="code-ex-x">0</span>)
+    </code><span>which can be applied to real world situations, don't let the math-y name of the function <code>linearEquation</code> fool you</span><br/>
+    <code>
+        function realWorldBusinessProblem(numberOfWorkers) {
+            ...secret equation for how long a job will take
+        }
+
+        y === <span class="code-ex-y">0</span> === realWorldBusinessProblem(<span class="code-ex-x">0</span>))
+    </code>
+    <br/>
+    <div style="margin: 1rem;">
+        <input type="range" value="1" min="-10" max="10" id="m" name="m"
+            oninput="this.nextElementSibling.value = this.value">
+        <output>1</output>
+        <label for="m">m coefficient</label>
+        <input type="range" value="0" min="-10" max="10" id="B" name="B"
+            onchange="this.nextElementSibling.value = this.value">
+        <output>0</output>
+        <label for="B">B coefficient</label>
+        <input type="range" value="0" min="-10" max="10" id="x" name="x"
+            onchange="this.nextElementSibling.value = this.value">
+        <output>0</output>
+        <label for="x">x value</label>
+    </div>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+
+<script>
+    window.linear = (m, B) => (x) => m * x + B
+
+    const ctx = document.getElementById('myChart');
+
+    window.xValues = Array.from(Array(21).keys()).map(x => x - 10)
+    const yValues = window.xValues.map(window.linear(document.getElementById('m').valueAsNumber, document.getElementById('B').valueAsNumber))
+
+    const data = {
+        labels: xValues,
+        datasets: [{
+            label: 'All possible values',
+            data: yValues,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        },
+        {
+            data: [{
+                x: 0,
+                y: 0,
+                r: 7
+            }],
+            label: ['Result of my x value'],
+            // steppedLine: true,
+            backgroundColor: "#cd2026",
+            type: 'bubble'
+        }
+        ],
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                x: {
+                    // min: -60,
+                    // max: 60,
+                    position: {
+                        y: 0
+                    }
+                },
+                y: {
+                    min: -10,
+                    max: 10,
+                    position: 'center',
+                },
+            }
+        }
+    };
+    window.linear_chart = new Chart(ctx, config)
+</script>
+
+<script>
+    document.getElementById('m').addEventListener('change', e => {
+        const yValues = window.xValues.map(window.linear(e.target.valueAsNumber, document.getElementById('B').valueAsNumber))
+        window.linear_chart.data.datasets[0].data = yValues
+        const newX = document.getElementById('x').valueAsNumber
+        const newY = window.linear_chart.data.datasets[0].data[Math.floor(yValues.length / 2) + newX]
+        window.linear_chart.data.datasets[1].data[0].y = newY
+        window.linear_chart.update()
+        document.getElementById('code-ex-m').innerText = e.target.value
+        Array.from(document.getElementsByClassName('code-ex-x')).forEach(element => {
+            element.innerText = newX
+        });
+        Array.from(document.getElementsByClassName('code-ex-y')).forEach(element => {
+            element.innerText = newY
+        })
+    })
+    document.getElementById('B').addEventListener('change', e => {
+        const yValues = window.xValues.map(window.linear(document.getElementById('m').valueAsNumber, e.target.valueAsNumber))
+        window.linear_chart.data.datasets[0].data = yValues
+        const newX = document.getElementById('x').valueAsNumber
+        const newY = window.linear_chart.data.datasets[0].data[Math.floor(yValues.length / 2) + newX]
+        window.linear_chart.data.datasets[1].data[0].y = newY
+        window.linear_chart.update()
+        document.getElementById('code-ex-B').innerText = e.target.value
+        Array.from(document.getElementsByClassName('code-ex-x')).forEach(element => {
+            element.innerText = newX
+        });
+        Array.from(document.getElementsByClassName('code-ex-y')).forEach(element => {
+            element.innerText = newY
+        })
+    })
+    document.getElementById('x').addEventListener('change', e => {
+        const newX = e.target.valueAsNumber
+        const newY = window.linear_chart.data.datasets[0].data[Math.floor(yValues.length / 2) + e.target.valueAsNumber]
+        window.linear_chart.data.datasets[1].data[0].x = e.target.valueAsNumber
+        window.linear_chart.data.datasets[1].data[0].y = window.linear_chart.data.datasets[0].data[Math.floor(yValues.length / 2) + e.target.valueAsNumber]
+        window.linear_chart.update()
+        Array.from(document.getElementsByClassName('code-ex-x')).forEach(element => {
+            element.innerText = newX
+        });
+        Array.from(document.getElementsByClassName('code-ex-y')).forEach(element => {
+            element.innerText = newY
+        })
+    })
+</script>
+
+</html>
