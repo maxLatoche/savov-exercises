@@ -42,6 +42,14 @@
             onchange="this.nextElementSibling.value = this.value">
         <output>0</output>
         <label for="x">x value</label>
+        <input type="range" value="0" min="0" max="10" id="x-axis" name="x-axis"
+            onchange="this.nextElementSibling.value = this.value">
+        <output>0</output>
+        <label for="x-axis">X-axis scale</label>
+        <input type="range" value="0" min="10" max="10000" id="y-axis" name="y-axis"
+            onchange="this.nextElementSibling.value = this.value; ">
+        <output>0</output>
+        <label for="y-axis">Y-axis scale</label>
     </div>
     <div>
         <canvas id="myChart"></canvas>
@@ -148,6 +156,9 @@
         window.quadratic_chart.update()
         document.getElementById('code-ex-x').innerText = newX
         document.getElementById('code-ex-y').innerText = newY
+    })
+    document.getElementById('x-axis').addEventListener('change', e => {
+        console.log(window.quadratic_chart.options.scales.set(e.target.value))
     })
 </script>
 
