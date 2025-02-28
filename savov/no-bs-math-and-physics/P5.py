@@ -41,7 +41,7 @@ print('P5.7 8\n', '')
 print('P5.7 9\n', '')
 
 # y = ax^3 + 6
-print('P5.8 1\n', "dy/dx = 3ax^2")
+print('P5.8 1\n', "dy/dx p = 3ax^2")
 # y = 13x^(3/2) - c
 # y' = 13(3/2)x^1/2
 print('P5.8 2\n', "dy/dx = 19.5x^1/2")
@@ -55,3 +55,8 @@ print('P5.8 5\n', "du/dz = naz^n-1)/c")
 # y = 1.18t^2 + 22.4
 print('P5.8 6\n', "dy/dt = 2.36t")
 
+print('P5.9a', "it's the same because it is the taylor series for e^x, and e^x has the derivative (e^x)ln(e) === (e^x)*1")
+
+print('P5.9b', "2ax + b")
+
+print('P5.9c', "3(x + a)^2")
