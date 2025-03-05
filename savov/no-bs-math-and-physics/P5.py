@@ -102,8 +102,7 @@ print('5.20e', "-18sin(θ + 6)")
 # cos^-1(θ)(-sin(θ))
 print('5.20f', "-sin(θ)/cos(θ) AKA -tan(θ)")
 
-print('5.21', ".000012")
-
+print('5.24', ".000012")
 
 a, b, V = sp.symbols('a b V')
 P = a*V**b
