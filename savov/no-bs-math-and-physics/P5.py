@@ -1,3 +1,4 @@
+import sympy as sp
 
 print('P5.1 1\n', -6)
 print('P5.1 2\n', 2)
@@ -102,3 +103,21 @@ print('5.20e', "-18sin(θ + 6)")
 print('5.20f', "-sin(θ)/cos(θ) AKA -tan(θ)")
 
 print('5.21', ".000012")
+
+
+a, b, V = sp.symbols('a b V')
+P = a*V**b
+
+derivativeP = sp.diff(P, V)
+
+print('P.25')
+print(derivativeP.subs({a:0.008264, b:2, V:100}).evalf())
+print(derivativeP.subs({a:0.008264, b:2, V:110}).evalf())
+print(derivativeP.subs({a:0.008264, b:2, V:120}).evalf())
+
+# Quick check that it really is a 100[W] bulb
+print(P.subs({a:0.008264, b:2, V:110}).evalf())
+
+# Note that if you bring it to Europe it won't be a 100[W] bulb anymore
+print(P.subs({a:0.008264, b:2, V:220}).evalf())
+
